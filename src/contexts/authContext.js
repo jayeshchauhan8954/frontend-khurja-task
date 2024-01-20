@@ -4,7 +4,7 @@ const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
     const [data, setData] = useState({
-        email: '',
+        email: "",
         name: "",
         phone: "",
         userName: "",
