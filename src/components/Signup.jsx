@@ -1,9 +1,6 @@
 import { useState } from 'react';
-// import axios from 'axios';
 import './signup.css'
 import URL from '../routes/routes'
-// const BASE_URL = 'https://backend-khurja-task-production.up.railway.app';
-// import { BASE_URL } from '../api/base-url';
 import { useNavigate } from 'react-router-dom'
 import { postData } from '../api/axios';
 const Signup = () => {
@@ -30,9 +27,6 @@ const Signup = () => {
                 phone: data.phone,
                 password: data.password,
             };
-
-            // const response = await axios.post(`${BASE_URL}/intern/api/v1/auth/signup`, postData);
-            // console.log(response.data);
             const response = await postData("intern/api/v1/auth/signup", post_data)
             setData({
                 ...data,
@@ -58,8 +52,7 @@ const Signup = () => {
                 onChange={handleChange('name')}
                 className="text-field"
             />
-
-
+            
             <label>Username</label>
             <input
                 type="text"

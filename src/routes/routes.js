@@ -1,7 +1,6 @@
 module.exports={
     _auth:{
         signup:"/signup",
-        // login:"login" // replace this
         login:'/login'
     },
     _base:{
