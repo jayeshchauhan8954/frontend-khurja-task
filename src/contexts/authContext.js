@@ -8,7 +8,7 @@ const UserProvider = ({ children }) => {
         name: "",
         phone: "",
         userName: "",
-        userType: "",
+        userType: ""
       });
 
   const updateStateValue = (newValue) => {
