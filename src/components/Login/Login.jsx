@@ -30,6 +30,7 @@ const Login = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          background: 'red'
         }}
       >
         <Typography component="h1" variant="h5">
