@@ -1,21 +1,23 @@
-import './App.css'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { SignupPage, LoginPage, HomePage } from './routes';
-import URL from './routes/routes'
-import {UserProvider}  from './contexts/authContext';
-
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { LoginPage, SignupPage } from './routes'
+import routes from './routes/routes'
+import { AuthProvider } from './contexts/authContext'
 const App = () => {
   return (
+<<<<<<< HEAD
     <UserProvider >
       <BrowserRouter>
+=======
+    <AuthProvider>
+      <Router>
+>>>>>>> 9245d378fd1d51feab220f2349deb9d0806b1013
         <Routes>
-          <Route path={URL._base.main} element={<HomePage />} />
-          <Route path={URL._auth.signup} element={<SignupPage />} />
-          <Route path={URL._auth.login} element={<LoginPage />} />
+          <Route path={routes._auth.signup} element={<SignupPage />} />
+          <Route path={routes._auth.login} element={<LoginPage />} />
         </Routes>
-      </BrowserRouter>
-    </UserProvider>
+      </Router>
+    </AuthProvider>
   )
 }
+
 export default App

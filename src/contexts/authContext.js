@@ -1,16 +1,17 @@
-import { createContext, useState } from 'react';
+import { createContext, useState } from "react";
 
-const UserContext = createContext();
+let UserContext = createContext();
 
-const UserProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
     const [data, setData] = useState({
+        name: '',
         email: '',
-        name: "",
-        phone: "",
-        userName: "",
-        userType: "",
-      });
+        userName: '',
+        phone: '',
+        password: ''
+    });
 
+<<<<<<< HEAD
   const updateStateValue = (newValue) => {
     setData((prev) => ({ ...prev, ...newValue }));
   };
@@ -21,5 +22,17 @@ const UserProvider = ({ children }) => {
     </UserContext.Provider>
   );
 };
+=======
+    return (
+        <UserContext.Provider value={{data,setData}}>
+            {children}
+        </UserContext.Provider>
+    )
+}
 
-export {UserProvider,UserContext}
+>>>>>>> 9245d378fd1d51feab220f2349deb9d0806b1013
+
+
+
+
+export { UserContext, AuthProvider }
