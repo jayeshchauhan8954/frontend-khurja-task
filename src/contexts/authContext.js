@@ -14,7 +14,7 @@ const UserProvider = ({ children }) => {
   const updateStateValue = (newValue) => {
     setData((prev) => ({ ...prev, ...newValue }));
   };
-
+ 
   return (
     <UserContext.Provider value={{ userData:data, updateStateValue }}>
       {children}

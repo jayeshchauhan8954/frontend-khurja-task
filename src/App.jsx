@@ -7,7 +7,7 @@ import {UserProvider}  from './contexts/authContext';
 
 const App = () => {
   return (
-    <UserProvider   >
+    <UserProvider >
       <BrowserRouter>
         <Routes>
           <Route path={URL._base.main} element={<HomePage />} />

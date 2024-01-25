@@ -6,5 +6,5 @@ export const getData=async(url)=>{
 }
 export const postData=async(url,data)=>{
     const response=await axios.post(`${BASE_URL}/${url}`,data)
-    return response.data;
+    return response.data;  
  }

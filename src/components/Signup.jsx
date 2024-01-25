@@ -48,8 +48,8 @@ const Signup = () => {
             console.error(error);
         }
     };
-
     return (
+
         <div className="container">
             <label>Name</label>
             <input
@@ -58,6 +58,7 @@ const Signup = () => {
                 onChange={handleChange('name')}
                 className="text-field"
             />
+
 
 
             <label>Username</label>
@@ -96,6 +97,7 @@ const Signup = () => {
                 Sign Up
             </button>
             {data.error && <h3>{data.error}</h3>}
+ 
         </div>
     );
 };
