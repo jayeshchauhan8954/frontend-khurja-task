@@ -1,24 +1,53 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 
+// context
+import { UserContext } from '../../contexts/authContext';
+import { postData } from '../../api/axios';
+import { useNavigate } from 'react-router-dom';
+import routes from '../../routes/routes';
+
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+  const { data, setData } = useContext(UserContext);
 
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  useEffect(() => {
+    setData({
+      name: '',
+      email: '',
+      userName: '',
+      phone: '',
+      password: ''
+    });
+  }, [setData]);
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setData({ ...data, [name]: value });
   };
-
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleLogin = () => {
-  
+  const showMsgAndRedirectToHome = (msg) => {
+    window.alert(msg);
+    navigate(routes._main.home)
+  }
+  const showErrMsgAndRedirect = (status, msg) => {
+    window.alert(`${msg} with status code ${status}`)
+    navigate(routes._auth.login)
+  }
+  const handleLogin = async () => {
+    try {
+      const { email, password } = data;
+      const dataToLogin = { email, password }
+      const response = await postData('intern/api/v1/auth/signin', dataToLogin)
+      console.log(response.data.data);
+      showMsgAndRedirectToHome(response.data.message);
+    } catch (error) {
+      console.log(error.response.data.message)
+      console.log(error.response.status)
+      showErrMsgAndRedirect(error.response.status, error.response.data.message)
+    }
   };
 
   return (
@@ -52,8 +81,8 @@ const Login = () => {
             name="email"
             autoComplete="email"
             autoFocus
-            value={email}
-            onChange={handleEmailChange}
+            value={data.email}
+            onChange={handleInputChange}
           />
           <TextField
             variant="outlined"
@@ -65,8 +94,8 @@ const Login = () => {
             type="password"
             id="password"
             autoComplete="current-password"
-            value={password}
-            onChange={handlePasswordChange}
+            value={data.password}
+            onChange={handleInputChange}
           />
           <Button
             type="button"
