@@ -107,6 +107,16 @@ const Login = () => {
           >
             Login
           </Button>
+          <Button
+            type="button"
+            fullWidth
+            variant="contained"
+            color="primary"
+            style={{ marginTop: '16px' }}
+            onClick={()=>navigate(routes._auth.signup)}
+          >
+            Go to Signup
+          </Button>
         </form>
       </div>
     </Container>
