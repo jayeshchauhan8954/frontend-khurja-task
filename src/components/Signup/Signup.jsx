@@ -5,15 +5,10 @@ import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
 
-// context things
-import { UserContext } from '../../contexts/authContext';
-
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   let userName, name, phone;
-
-  // const {data,setData}=useContext(UserContext);
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
   };
@@ -35,6 +30,7 @@ const Signup = () => {
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
+          background:'red'
         }}
       >
         <Typography component="h1" variant="h5">

@@ -2,6 +2,7 @@ module.exports = {
     _auth: {
         login: '/login',
         signup: '/signup',
-        home: '/home'
+        home: '/home',
+        slidebar: '/sidebar'
     }
 }
