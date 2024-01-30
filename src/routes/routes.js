@@ -5,5 +5,8 @@ module.exports = {
     },
     _main:{
         home:'/'
+    },
+    _task:{
+        getTask:"/task"
     }
 }
