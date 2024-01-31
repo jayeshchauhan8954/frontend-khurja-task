@@ -41,6 +41,7 @@ const Login = () => {
       const { email, password } = data;
       const dataToLogin = { email, password }
       const response = await postData('intern/api/v1/auth/signin', dataToLogin)
+      localStorage.setItem('accessToken', response.data.accessToken);
       console.log(response.data.data);
       showMsgAndRedirectToHome(response.data.message);
     } catch (error) {
@@ -113,7 +114,7 @@ const Login = () => {
             variant="contained"
             color="primary"
             style={{ marginTop: '16px' }}
-            onClick={()=>navigate(routes._auth.signup)}
+            onClick={() => navigate(routes._auth.signup)}
           >
             Go to Signup
           </Button>

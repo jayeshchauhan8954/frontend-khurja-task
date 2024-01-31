@@ -7,7 +7,7 @@ export const postData = async (url, payload) => {
     return response;
 }
 
-export const getData = async (url) => {
-    const response = await axios.get(`${BASE_URL}${url}`);
+export const getData = async (url, headers) => {
+    const response = await axios.get(url, { headers });
     return response;
-}
+};

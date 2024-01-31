@@ -6,7 +6,10 @@ const TaskPage = () => {
   const [task, setTask] = useState(null);
   const getTask = async () => {
     try {
-      let response = await getData('/intern/api/v1/get-all-tasks')
+      const headers = {
+        'accessToken': `Bearer ${localStorage.getItem('accessToken')}`
+    };
+      let response = await getData('/intern/api/v1/get-all-tasks',headers)
       console.log(response)
     } catch (error) {
       console.log(error.message)
