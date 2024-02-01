@@ -1,8 +1,12 @@
 module.exports = {
     _auth: {
         login: '/login',
-        signup: '/signup',
-        home: '/home',
-        slidebar: '/sidebar'
+        signup: '/signup'
+    },
+    _main:{
+        home:'/'
+    },
+    _task:{
+        getTask:"/task"
     }
 }

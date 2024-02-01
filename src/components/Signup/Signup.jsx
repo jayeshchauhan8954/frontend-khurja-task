@@ -1,24 +1,41 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
+import { useNavigate } from 'react-router-dom';
+import routes from '../../routes/routes';
+
+// context things
+import { UserContext } from '../../contexts/authContext';
+import { postData } from '../../api/axios';
 
 const Signup = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  let userName, name, phone;
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
+  const { data, setData } = useContext(UserContext);
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    setData({
+      name: '',
+      email: '',
+      userName: '',
+      phone: '',
+      password: ''
+    });
+  }, [setData]); 
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setData({ ...data, [name]: value });
   };
 
-  const handlePasswordChange = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleSignup = () => {
-
+  const handleSignup = async() => {
+    try { 
+      const response = await postData('intern/api/v1/auth/signup',data)
+      // console.log(response)
+    } catch (error) {
+     console.log(error.message) 
+    }
   };
 
   return (
@@ -52,8 +69,8 @@ const Signup = () => {
             label="Name"
             name="name"
             autoFocus
-            value={name}
-            onChange={handleEmailChange}
+            value={data.name}
+            onChange={handleInputChange}
           />
           <TextField
             variant="outlined"
@@ -64,8 +81,8 @@ const Signup = () => {
             label="Email Address"
             name="email"
             autoComplete="email"
-            value={email}
-            onChange={handleEmailChange}
+            value={data.email}
+            onChange={handleInputChange}
           />
           <TextField
             variant="outlined"
@@ -75,11 +92,9 @@ const Signup = () => {
             id="userName"
             label="User Name"
             name="userName"
-            value={userName}
-            onChange={handleEmailChange}
+            value={data.userName}
+            onChange={handleInputChange}
           />
-
-
           <TextField
             variant="outlined"
             margin="normal"
@@ -89,8 +104,8 @@ const Signup = () => {
             label="Phone No."
             type="text"
             id="phone"
-            value={phone}
-            onChange={handlePasswordChange}
+            value={data.phone}
+            onChange={handleInputChange}
           />
           <TextField
             variant="outlined"
@@ -102,8 +117,8 @@ const Signup = () => {
             type="password"
             id="password"
             autoComplete="current-password"
-            value={password}
-            onChange={handlePasswordChange}
+            value={data.password}
+            onChange={handleInputChange}
           />
           <Button
             type="button"
@@ -114,6 +129,16 @@ const Signup = () => {
             onClick={handleSignup}
           >
             Signup
+          </Button>
+          <Button
+            type="button"
+            fullWidth
+            variant="contained"
+            color="primary"
+            style={{ marginTop: '16px' }}
+            onClick={()=>navigate(routes._auth.login)}
+          >
+            Go to Login
           </Button>
         </form>
       </div>
