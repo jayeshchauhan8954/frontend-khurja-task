@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
+import Cookies from 'js-cookie';
 
 // context
 import { UserContext } from '../../contexts/authContext';
@@ -41,8 +42,15 @@ const Login = () => {
       const { email, password } = data;
       const dataToLogin = { email, password }
       const response = await postData('intern/api/v1/auth/signin', dataToLogin)
-      localStorage.setItem('accessToken', response.data.accessToken);
-      console.log(response.data.data);
+      // console.log(response.headers.accesstoken, 'this is response headers')
+      let token;
+      if (response) {
+        token = Cookies.get('accessToken');
+        console.log(token, "this is accessToken from cookies");
+      }
+
+      // localStorage.setItem('accesstoken', response.data.accessToken);
+      // console.log(response.data.data);
       showMsgAndRedirectToHome(response.data.message);
     } catch (error) {
       console.log(error.response.data.message)

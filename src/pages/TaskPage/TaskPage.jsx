@@ -18,10 +18,10 @@ const TaskPage = () => {
   const getTask = async () => {
     try {
       const headers = {
-        'accessToken': `Bearer ${localStorage.getItem('accessToken')}`
+        'accessToken': `localStorage.getItem('accesstoken')`
     };
       let response = await getData('/intern/api/v1/get-all-tasks',headers)
-      console.log(response)
+      console.log(response, 'this response is coming from task data')
     } catch (error) {
       console.log(error.message)
     }
