@@ -11,7 +11,11 @@ import { UserContext } from '../../contexts/authContext';
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  let userName, name, phone;
+  const [name ,setName] = useState('');
+  const [userName,setuserName] = useState('');
+  const [phone ,setphone] = useState('')
+  
+  let username, Name, Phone;
 
   // const {data,setData}=useContext(UserContext);
   const handleEmailChange = (event) => {
@@ -20,6 +24,17 @@ const Signup = () => {
 
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
+  };
+
+  const handleNameChange = (event)=>{
+    setName (event.target.value);
+  };
+
+  const handleuserNameChange = (event)=>{
+   setuserName(event.target.value); 
+  };
+  const handlephoneChange = (event)=>{
+    setphone(event.target.value);
   };
 
   const handleSignup = () => {
@@ -57,7 +72,7 @@ const Signup = () => {
             name="name"
             autoFocus
             value={name}
-            onChange={handleEmailChange}
+            onChange={handleNameChange}
           />
           <TextField
             variant="outlined"
@@ -80,7 +95,7 @@ const Signup = () => {
             label="User Name"
             name="userName"
             value={userName}
-            onChange={handleEmailChange}
+            onChange={handleuserNameChange}
           />
 
 
@@ -94,7 +109,7 @@ const Signup = () => {
             type="text"
             id="phone"
             value={phone}
-            onChange={handlePasswordChange}
+            onChange={handlephoneChange}
           />
           <TextField
             variant="outlined"

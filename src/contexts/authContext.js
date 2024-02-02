@@ -11,18 +11,6 @@ const AuthProvider = ({ children }) => {
         password: ''
     });
 
-<<<<<<< HEAD
-  const updateStateValue = (newValue) => {
-    setData((prev) => ({ ...prev, ...newValue }));
-  };
- 
-  return (
-    <UserContext.Provider value={{ userData:data, updateStateValue }}>
-      {children}
-    </UserContext.Provider>
-  );
-};
-=======
     return (
         <UserContext.Provider value={{data,setData}}>
             {children}
@@ -30,7 +18,6 @@ const AuthProvider = ({ children }) => {
     )
 }
 
->>>>>>> 9245d378fd1d51feab220f2349deb9d0806b1013
 
 
 
