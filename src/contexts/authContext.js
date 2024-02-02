@@ -8,7 +8,8 @@ const AuthProvider = ({ children }) => {
         email: '',
         userName: '',
         phone: '',
-        password: ''
+        password: '',
+        accessToken:null
     });
 
     return (
