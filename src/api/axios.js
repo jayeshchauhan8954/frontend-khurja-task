@@ -8,6 +8,6 @@ export const postData = async (url, payload) => {
 }
 
 export const getData = async (url, headers) => {
-    const response = await axios.get(url, { headers });
+    const response = await axios.get(`${BASE_URL}${url}`, { headers });
     return response;
 };
